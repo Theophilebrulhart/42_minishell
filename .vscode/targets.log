@@ -1,0 +1,477 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# This program built for i386-apple-darwin11.3.0
+ 
+
+# Make data base, printed on Tue May 31 18:42:44 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile (from `Makefile', line 15)
+I = includes/
+# makefile
+CURDIR := /Users/tbrulhar/Documents/42_tronc_commun/3_circle/minishell
+# makefile
+SHELL = /bin/sh
+# makefile (from `Makefile', line 39)
+RM = /bin/rm -rf
+# makefile (from `Makefile', line 14)
+O = objs/
+# makefile (from `Makefile', line 13)
+S = src/
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/bin/make
+# makefile (from `Makefile', line 33)
+CFLAGS = -Wall -Wextra -Werror -g -I$I
+# makefile (from `Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# makefile (from `Makefile', line 35)
+OBJS = $(SRCS:$S%=$O%.o)
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cbx00032z8/T/vscode-ipc-56680f3f-933b-457d-9325-813a545edd47.sock
+# environment
+VSCODE_CWD = /
+# environment
+PATH = /usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+# environment
+LaunchInstanceID = FF5DEC07-0E6A-4A01-AA1C-169DD71CDEB7
+# environment
+VSCODE_LOG_STACK = false
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+# environment
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.QTM1gEVpAn/Listeners
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /Users/tbrulhar/Documents/42_tronc_commun/3_circle/minishell
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /Users/tbrulhar
+# default
+MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
+# environment
+VSCODE_CODE_CACHE_PATH = /Users/tbrulhar/Library/Application Support/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+# environment
+LOGNAME = tbrulhar
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XPC_FLAGS = 0x0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# makefile (from `Makefile', line 34)
+SRCS := src/main/main.c src/pipex/waitpid.c src/pipex/error_file.c src/pipex/access_path.c src/pipex/child_execution.c src/pipex/ft_split.c src/pipex/parsing_command.c src/pipex/pipex_main.c src/builtin/cd.c
+# environment
+SHLVL = 1
+# makefile (from `Makefile', line 29)
+CC = gcc
+# default
+MAKE_VERSION := 3.81
+# environment
+USER = tbrulhar
+# makefile
+.DEFAULT_GOAL := all
+# makefile (from `Makefile', line 17)
+NAME = minishell
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# makefile (from `Makefile', line 38)
+LFLAGS = -L./libft
+# default
+MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
+# default
+.VARIABLES := 
+# environment
+TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n000cbx00032z8/T/
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /Users/tbrulhar/Library/Application Support/Code/1.67.2-main.sock
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000003.Electron
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
+# environment
+__CF_USER_TEXT_ENCODING = 0x18BE8:0x0:0x0
+# environment
+COMMAND_MODE = unix2003
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# makefile (from `Makefile', line 37)
+LBFT_PATH = ./libft/
+# environment
+LC_ALL = C
+# environment
+SECURITYSESSIONID = 186b2
+# automatic
+^F = $(notdir $^)
+# makefile (from `Makefile', line 36)
+DEPS = $(SRCS:$S%=$D%.d)
+# default
+SUFFIXES := 
+# default
+.INCLUDE_DIRS = /usr/local/include
+# environment
+MAKELEVEL := 0
+# environment
+LANG = C
+# environment
+VSCODE_PID = 5229
+# variable set hash-table stats:
+# Load=75/1024=7%, Rehash=0, Collisions=6/140=4%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 16777225, inode 929144): 10 files, no impossibilities.
+
+# 10 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+objs/builtin/cd.c.o: src/builtin/cd.c | objs/
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: `builtin/cd.c'
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 51):
+	@echo "Compiling $^: "
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(MAKE) -C ./libft
+	@echo "✓"
+	
+
+objs/pipex/parsing_command.c.o: src/pipex/parsing_command.c | objs/
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: `pipex/parsing_command.c'
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 51):
+	@echo "Compiling $^: "
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(MAKE) -C ./libft
+	@echo "✓"
+	
+
+all: minishell
+#  Phony target (prerequisite of .PHONY).
+#  Command-line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
+
+objs/pipex/child_execution.c.o: src/pipex/child_execution.c | objs/
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: `pipex/child_execution.c'
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 51):
+	@echo "Compiling $^: "
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(MAKE) -C ./libft
+	@echo "✓"
+	
+
+.PHONY: all clean fclean re test
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/builtin/cd.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/pipex/parsing_command.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+objs/main/main.c.o: src/main/main.c | objs/
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: `main/main.c'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := objs/main/main.c.o
+# automatic
+# % := 
+# automatic
+# * := main/main.c
+# automatic
+# + := src/main/main.c
+# automatic
+# | := objs/
+# automatic
+# < := src/main/main.c
+# automatic
+# ^ := src/main/main.c
+# automatic
+# ? := src/main/main.c
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=2/18=11%
+#  commands to execute (from `Makefile', line 51):
+	@echo "Compiling $^: "
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(MAKE) -C ./libft
+	@echo "✓"
+	
+
+# Not a target:
+src/pipex/child_execution.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/main/main.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-31 16:51:33
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+objs/pipex/pipex_main.c.o: src/pipex/pipex_main.c | objs/
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: `pipex/pipex_main.c'
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 51):
+	@echo "Compiling $^: "
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(MAKE) -C ./libft
+	@echo "✓"
+	
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-31 18:42:08
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+src/pipex/pipex_main.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+ 
+
+objs/:
+#  Implicit rule search has not been done.
+#  Last modified 2022-05-31 18:41:37
+#  File has been updated.
+#  Successfully updated.
+#  commands to execute (from `Makefile', line 45):
+	@mkdir $@
+	@mkdir objs/main
+	
+
+test: minishell
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 75):
+	./$(NAME)
+	
+
+minishell: objs/main/main.c.o objs/pipex/waitpid.c.o objs/pipex/error_file.c.o objs/pipex/access_path.c.o objs/pipex/child_execution.c.o objs/pipex/ft_split.c.o objs/pipex/parsing_command.c.o objs/pipex/pipex_main.c.o objs/builtin/cd.c.o
+#  Implicit rule search has not been done.
+#  Last modified 2022-05-31 16:52:03
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
+#  commands to execute (from `Makefile', line 61):
+	@echo "Assembling $(NAME)"
+	@$(CC) $^ -o $@
+	
+
+fclean: clean
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 69):
+	@echo "Everything!"
+	@$(RM) $(NAME)
+	
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+objs/pipex/waitpid.c.o: src/pipex/waitpid.c | objs/
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: `pipex/waitpid.c'
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 51):
+	@echo "Compiling $^: "
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(MAKE) -C ./libft
+	@echo "✓"
+	
+
+objs/pipex/ft_split.c.o: src/pipex/ft_split.c | objs/
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: `pipex/ft_split.c'
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 51):
+	@echo "Compiling $^: "
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(MAKE) -C ./libft
+	@echo "✓"
+	
+
+re: fclean all
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 65):
+	@echo "Cleaning up..."
+	@$(RM) $D $O
+	
+
+objs/pipex/error_file.c.o: src/pipex/error_file.c | objs/
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: `pipex/error_file.c'
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 51):
+	@echo "Compiling $^: "
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(MAKE) -C ./libft
+	@echo "✓"
+	
+
+# Not a target:
+src/pipex/waitpid.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/pipex/ft_split.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/pipex/error_file.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+objs/pipex/access_path.c.o: src/pipex/access_path.c | objs/
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: `pipex/access_path.c'
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 51):
+	@echo "Compiling $^: "
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(MAKE) -C ./libft
+	@echo "✓"
+	
+
+# Not a target:
+src/pipex/access_path.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=29/1024=3%, Rehash=0, Collisions=0/88=0%
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
+
+# Finished Make data base on Tue May 31 18:42:44 2022
+
+ 
