@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   include.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: theophilebrulhart <theophilebrulhart@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:30:22 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/05/31 16:22:56 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/02 14:02:49 by theophilebr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@
 # include <sys/ioctl.h>
 # include "../libft/libft.h"
 
+typedef struct	s_cmd
+{
+	int		infile;
+	int		outfile;
+	char	*cmd_path;
+	char	*full_cmd;
+}	t_cmd
+
 int		pipex_start(int argc, char **argv, char **env);
-void	ft_cd(char **env);
+void	ft_cd(char *path);
 #endif

@@ -3,24 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: theophilebrulhart <theophilebrulhart@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:53:43 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/05/31 16:07:20 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/02 12:13:13 by theophilebr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/include.h"
 
-void	ft_cd(char **env)
+void	ft_cd(char *path)
 {
-	int	i;
-
-	i = 0;
-	while (env[i])
+	printf("on est dans le ft_dd\n");
+	if (path)
 	{
-		printf("%s\n", env[i]);
-		i++;
+		chdir(path);
 	}
-	printf("on est dans cd\n");
 }

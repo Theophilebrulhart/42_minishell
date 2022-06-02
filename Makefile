@@ -1,79 +1,55 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    secure_mkfl                                        :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/03/16 00:46:25 by bgoncalv          #+#    #+#              #
-#    Updated: 2022/05/31 18:47:14 by tbrulhar         ###   ########.fr        #
+#    Created: 2022/05/31 16:35:37 by tbrulhar          #+#    #+#              #
+#    Updated: 2022/05/31 18:41:25 by tbrulhar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-S		= src/
-O		= objs/
-I		= includes/
+SRCS         =	src/main/main.c\
+				src/builtin/cd.c\
+				src/pipex/access_path.c\
+				src/pipex/child_execution.c\
+				src/pipex/error_file.c\
+				src/pipex/ft_split.c\
+				src/pipex/parsing_command.c\
+				src/pipex/pipex_main.c\
+				src/pipex/waitpid.c\
+				
+OBJS         = ${SRCS:.c=.o}
 
-NAME	= minishell
+NAME         = minishell
 
-SRCS	=	main/main.c\
-			pipex/waitpid.c\
-			pipex/error_file.c\
-			pipex/access_path.c\
-			pipex/child_execution.c\
-			pipex/ft_split.c\
-			pipex/parsing_command.c\
-			pipex/pipex_main.c\
-			builtin/cd.c\
+AR             = ar rcs
 
-CC		= gcc
+GCC            = gcc
 
-CFLAGS	+= -Wall -Wextra -Werror -g
+RM             = rm -f
 
-CFLAGS	+= -I$I
-SRCS	:= $(foreach file,$(SRCS),$S$(file))
-OBJS	= $(SRCS:$S%=$O%.o)
-DEPS	= $(SRCS:$S%=$D%.d)
+CFLAGS         = -Wall -Wextra -Werror
+
 LBFT_PATH    =     ./libft/
-LFLAGS		= -L./libft
-RM		= /bin/rm -rf
 
-.PHONY: all clean fclean re test
+FRAMLIBS    =     -L ${LBFT_PATH} -lft
+all:         $(NAME)
 
-create_dir_objs:
-	@mkdir objs
-	@mkdir objs/main
-	@mkdir objs/pipex
-	@mkdir objs/builtin
+.c.o:
+			$(GCC) $(CFLAGS) -Imlx -c $< -o $@
 
-all: $(NAME)
-$O: create_dir_objs
-
-$(OBJS): | $O
-
-$(OBJS): $O%.o: $S%
-		@echo "Compiling $^: "
-		@$(CC) $(CFLAGS) -c $< -o $@
-		@$(MAKE) -C ./libft
-		@echo "✓"
-
-$D:
-		@mkdir $@
-		@mkdir objs/main
-
-$(NAME): $(OBJS)
-		@echo "Assembling $(NAME)"
-		@$(CC) $^ -o $@
+$(NAME):     $(OBJS)
+			@$(MAKE) -C $(LBFT_PATH)
+			$(GCC) $(OBJS) $(CFLAGS) -I ${LBFT_PATH} -o $(NAME) $(FRAMLIBS)
 
 clean:
-		@echo "Cleaning up..."
-		@$(RM) $D $O
+			${RM} ${OBJS}
+			@$(MAKE) -C $(LBFT_PATH) clean
 
-fclean: clean
-		@echo "Everything!"
-		@$(RM) $(NAME)
+fclean:     clean
+			${RM} ${NAME}
+			@$(MAKE) -C $(LBFT_PATH) fclean
 
 re: fclean all
-
-test: $(NAME)
-	./$(NAME)
