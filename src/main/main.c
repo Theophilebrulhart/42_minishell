@@ -6,7 +6,7 @@
 /*   By: theophilebrulhart <theophilebrulhart@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 18:25:00 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/06/02 14:26:41 by theophilebr      ###   ########.fr       */
+/*   Updated: 2022/06/02 16:33:50 by theophilebr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,32 @@ int	main(int argc, char **argv, char **env)
 	//	7 -> refaire un tableau avec tout bien séparé
 	//	8 -> créer une liste chaîné ou chaque noeud contiendra : fd_infile, fd_outfile, full_path (chemin absolu de la commande), full_cmd (une string contenant la commande avec toutes ces optioons/parametre)
 	//	9 -> envoyer la liste pour l'execution
-	//	10 -> voir si la commande est un builtin ou non
-	//	11 -> if builtin : trouver lequel et lancer la fonction apparenté
-	//	12 -> if not builtin : lancer pipex_amélioré
+	//	10 -> lancer pipex améliorer
+	//	11 -> créer le nombre de pipe désiré
+	//	12 -> fork pour la première commande
+	//	13 -> lancer le child et checker si c'est un builtin ou non
+	//	14 -> if builtin : checker lequel s'est et lancer la fonction apparenté (attention de fermer et gérer les fd des autres pipes)
+	//	15 -> if not builtin : fermer les fd non utilisés,
+								//if infile : l'ouvrir et vérifier son ouverture, dupliquer son fd
+								// if pipe : rediriger STDOUT dans le pipe
+								// fermer tous les fd
+								//executer la commande
+	//	16 -> récuper le status du child_process
+	//	17 -> si problème quitter proprement le programme avec message d'erreur dans stderr
+	//	18 -> si pas de problème : continuer jusqu'a la fin des commandes
+	// 
+								
 
 	// changement à apporter à pipex : 
 	//	Ne pas devoir avoir obligatoirement d'infile
 	//	Gérer les redirections de stdin et stdout à n'importe quel moment
 	//	Pouvoir ne recevoir qu'une seule commande
 	//	changer le main pour qu'ils recoivent les valeurs de la liste chaîné
+
+	// information supplémentaire nécessaire à mon pipex :
+	// le nombre de pipe à créer
+	// le nombre de commmande total (enfin je suis pas sur que ca soit la solution mais il faut que j'ai accès à l'index de la dernière commande)
+
 	
 
 	printf("salut\n");
