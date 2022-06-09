@@ -1,17 +1,18 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    secure_mkfl                                        :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 16:35:37 by tbrulhar          #+#    #+#              #
-#    Updated: 2022/05/31 18:41:25 by tbrulhar         ###   ########.fr        #
+#    Updated: 2022/06/09 17:33:47 by tbrulhar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS         =	src/main/main.c\
 				src/builtin/cd.c\
+				src/builtin/is_builtin.c\
 				src/pipex/access_path.c\
 				src/pipex/child_execution.c\
 				src/pipex/error_file.c\

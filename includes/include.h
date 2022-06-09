@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   include.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: theophilebrulhart <theophilebrulhart@st    +#+  +:+       +#+        */
+/*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:30:22 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/06/02 14:02:49 by theophilebr      ###   ########.fr       */
+/*   Updated: 2022/06/09 20:10:55 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,19 @@
 # include <fcntl.h>
 # include <sys/ioctl.h>
 # include "../libft/libft.h"
+# include "../src/pipex/pipex.h"
 
 typedef struct	s_cmd
 {
-	int		infile;
-	int		outfile;
-	char	*cmd_path;
+	char	*infile;
+	char	*outfile;
+	char	**cmd_path;
 	char	*full_cmd;
-}	t_cmd
+	char	**env;
+	int		nbr_pipe;
+}	t_cmd;
 
-int		pipex_start(int argc, char **argv, char **env);
+int		pipex_start(t_cmd *cmd);
 void	ft_cd(char *path);
+void	is_builtin(t_cmd *cmd);
 #endif

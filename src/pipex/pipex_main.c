@@ -6,23 +6,24 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:18:05 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/05/31 16:53:54 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/09 20:10:30 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+#include "../../includes/include.h"
 
-int	**pipe_allocation(int argc)
+int	**pipe_allocation(int nbr_pipe)
 {
 	int	**fd_pipe;
 	int	*fd_single_pipe;
 	int	i;
 
 	i = 0;
-	fd_pipe = malloc((argc - 4) * sizeof(*fd_pipe));
+	fd_pipe = malloc((nbr_pipe) * sizeof(*fd_pipe));
 	if (!fd_pipe)
 		return (0);
-	while (i < argc - 4)
+	while (i < nbr_pipe)
 	{
 		fd_single_pipe = malloc(2 * sizeof(*fd_single_pipe));
 		if (!fd_single_pipe)
@@ -67,15 +68,17 @@ void	forking_middle_child(t_pipex *pipex)
 	}
 }
 
-void	ft_pipex(t_pipex *pipex)
+void	ft_pipex(t_cmd *cmd, t_pipex *pipex)
 {
 	pipex->nbr_pipe = 0;
-	while (pipex->nbr_pipe < pipex->argc - 4)
+	while (pipex->nbr_pipe < cmd->nbr_pipe)
 	{
 		if (pipe(pipex->fd_pipe[pipex->nbr_pipe]) < 0)
 			free_all(pipex);
 		pipex->nbr_pipe++;
 	}
+	is_builtin(cmd);
+	pipex->cmd_path = parsing_command_path(pipex, cmd);
 	pipex->id_child[0] = fork();
 	if (pipex->id_child[0] < 0)
 		free_all(pipex);
@@ -91,22 +94,22 @@ void	ft_pipex(t_pipex *pipex)
 	wait_all(pipex);
 }
 
-int	pipex_start(int argc, char **argv, char **env)
+int	pipex_start(t_cmd *cmd)
 {
 	t_pipex	pipex;
 
-	pipex.env = env;
-	pipex.infile = argv[1];
-	pipex.outfile = argv[argc - 1];
-	pipex.argc = argc;
-	pipex.cmd = parsing_command(argc, argv);
-	pipex.argv = argv;
-	pipex.cmd_path = parsing_command_path(&pipex);
-	pipex.id_child = malloc((argc - 3) * sizeof(*pipex.id_child));
-	if (!pipex.id_child)
-		return (1);
-	pipex.fd_pipe = pipe_allocation(argc);
-	ft_pipex(&pipex);
-	free_all(&pipex);
+	printf("cmd.infile : %s\n", cmd->infile);
+	printf("cmd.path[0] : %s\n", cmd->cmd_path[0]);
+	// pipex.env = env;
+	// pipex.argc = argc;
+	//pipex.cmd = parsing_command(argc, argv);
+	// pipex.argv = argv;
+	//pipex.cmd_path = parsing_command_path(&pipex);
+	pipex.id_child = malloc((cmd->nbr_pipe + 1) * sizeof(*pipex.id_child));
+	// if (!pipex.id_child)
+	// 	return (1);
+	pipex.fd_pipe = pipe_allocation(cmd->nbr_pipe);
+	ft_pipex(cmd, &pipex);
+	// free_all(&pipex);
 	return (0);
 }

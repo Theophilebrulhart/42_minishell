@@ -6,19 +6,19 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:03:12 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/05/12 15:42:31 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/09 20:08:54 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	first_child(t_pipex *pipex)
+void	first_child(t_pipex *pipex, t_cmd *cmd)
 {
 	int	i;
 	int	j;
 
-	i = 1;
-	while (i < pipex->argc - 4)
+	i = 0;
+	while (i < cmd->nbr_pipe)
 	{
 		j = 0;
 		while (pipex->fd_pipe[i][j])
@@ -28,14 +28,17 @@ void	first_child(t_pipex *pipex)
 		}
 		i++;
 	}
-	pipex->fd_pipe[0][0] = open(pipex->infile, O_RDONLY, 0777);
-	if (pipex->fd_pipe[0][0] == -1)
-		error_exit(pipex, "no such file or directory", pipex->infile);
+	if (cmd->infile)
+	{
+		pipex->fd_pipe[0][0] = open(cmd->infile, O_RDONLY, 0777);
+		if (pipex->fd_pipe[0][0] == -1)
+			error_exit(pipex, "no such file or directory", pipex->infile);
+	}
 	dup2(pipex->fd_pipe[0][0], STDIN_FILENO);
 	close (pipex->fd_pipe[0][0]);
 	dup2(pipex->fd_pipe[0][1], STDOUT_FILENO);
 	close(pipex->fd_pipe[0][1]);
-	execve(pipex->cmd_path[0], &pipex->cmd[0][0], pipex->env);
+	execve(pipex->cmd_path, &cmd->cmd_path, cmd->env);
 	exit(127);
 }
 
@@ -75,7 +78,7 @@ void	middle_child(t_pipex *pipex, int id)
 	close(pipex->fd_pipe[id - 1][0]);
 	dup2(pipex->fd_pipe[id][1], STDOUT_FILENO);
 	close(pipex->fd_pipe[id][1]);
-	execve(pipex->cmd_path[id], &pipex->cmd[id][0], pipex->env);
+	execve(&pipex->cmd_path[id], &pipex->cmd[id][0], pipex->env);
 	exit (127);
 }
 
@@ -103,7 +106,7 @@ void	last_child(t_pipex *pipex)
 		error_exit(pipex, "zsh: cannot open : ", pipex->outfile);
 	dup2(fd_outfile, STDOUT_FILENO);
 	close(pipex->fd_pipe[pipex->nbr_pipe - 1][1]);
-	execve(pipex->cmd_path[pipex->argc - 4], &pipex->cmd[pipex->argc - 4][0],
+	execve(&pipex->cmd_path[pipex->argc - 4], &pipex->cmd[pipex->argc - 4][0],
 		pipex->env);
 	exit(127);
 }

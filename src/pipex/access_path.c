@@ -6,35 +6,35 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:12:17 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/05/12 16:19:04 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/09 20:13:51 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*path_str(t_pipex *pipex)
+char	*path_str(t_pipex *pipex, t_cmd *cmd)
 {
 	t_env	env;
 
 	env.path = "PATH";
 	env.j = 0;
-	while (pipex->env[env.j])
+	while (cmd->env[env.j])
 	{
 		env.i = 0;
-		while (pipex->env[env.j][env.i] == env.path[env.i])
+		while (cmd->env[env.j][env.i] == env.path[env.i])
 			env.i++;
 		if (env.path[env.i] == '\0')
 			break ;
 		env.j++;
 	}
 	env.t = 5;
-	env.path_str = malloc((ft_strlen(pipex->env[env.j]) - 4)
+	env.path_str = malloc((ft_strlen(cmd->env[env.j]) - 4)
 			* sizeof(*path_str));
 	if (!env.path_str)
 		free_all(pipex);
 	env.i = 0;
-	while (pipex->env[env.j][env.t])
-		env.path_str[env.i++] = pipex->env[env.j][env.t++];
+	while (cmd->env[env.j][env.t])
+		env.path_str[env.i++] = cmd->env[env.j][env.t++];
 	env.path_str[env.i] = '\0';
 	return (env.path_str);
 }
@@ -66,7 +66,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (str);
 }
 
-char	*access_test(t_pipex *pipex, char **all_path, int cmd_nbr)
+char	*access_test(t_cmd *cmd, char **all_path)
 {
 	char	*str_path;
 	int		i;
@@ -76,36 +76,13 @@ char	*access_test(t_pipex *pipex, char **all_path, int cmd_nbr)
 	while (all_path[i])
 	{
 		j = 0;
-		str_path = ft_strjoin(all_path[i], pipex->cmd[cmd_nbr][0]);
+		str_path = ft_strjoin(all_path[i], cmd->cmd_path[0]);
 		if (!access(str_path, F_OK))
 			return (str_path);
 		free(str_path);
 		i++;
 	}
-	error_exit(pipex, "command not found", pipex->cmd[cmd_nbr][0]);
+	printf("on a pas rouver la commande\n");
+	//error_exit(cmd, "command not found", cmd->cmd_path);
 	return (NULL);
-}
-
-char	**path_creation(t_pipex *pipex, char **all_path)
-{
-	int		i;
-	char	**final_path;
-
-	final_path = malloc((pipex->argc - 2) * sizeof(*final_path));
-	if (!final_path)
-		free_all(pipex);
-	final_path[pipex->argc - 2] = 0;
-	i = 0;
-	while (i < pipex->argc - 3)
-	{
-		final_path[i] = access_test(pipex, all_path, i);
-		i++;
-	}
-	i = 0;
-	while (all_path[i])
-	{
-		free(all_path[i]);
-		i++;
-	}
-	return (final_path);
 }
