@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 13:32:41 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/06/10 11:28:47 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/10 13:52:44 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	free_all(t_pipex *pipex, t_cmd *cmd)
 		free(pipex->fd_pipe[i]);
 		i++;
 	}
-	free(pipex->fd_pipe);
+	if (cmd->nbr_pipe)
+		free(pipex->fd_pipe);
 	exit (0);
 }
 

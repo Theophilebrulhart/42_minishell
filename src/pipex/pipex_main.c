@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:18:05 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/06/10 11:41:38 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/10 15:09:48 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	forking_middle_child(t_pipex *pipex, t_cmd *cmd)
 	int	i;
 
 	i = 1;
-	while (i < cmd->nbr_pipe)
+	while (i < cmd->nbr_pipe + 1)
 	{
 		pipex->cmd_path = parsing_command_path(pipex, cmd);
 		printf("cmd->nbr_pipe : %d\n", cmd->nbr_pipe);
@@ -74,7 +74,6 @@ void	forking_middle_child(t_pipex *pipex, t_cmd *cmd)
 
 void	ft_pipex(t_cmd *cmd, t_pipex *pipex)
 {
-	pipex->nbr_pipe = 0;
 	while (pipex->nbr_pipe < cmd->nbr_pipe)
 	{
 		if (pipe(pipex->fd_pipe[pipex->nbr_pipe]) < 0)
@@ -90,12 +89,6 @@ void	ft_pipex(t_cmd *cmd, t_pipex *pipex)
 		first_child(pipex, cmd);
 	//avancer d'un noeuds dans la liste
 	forking_middle_child(pipex, cmd);
-	pipex->cmd_path = parsing_command_path(pipex, cmd);
-	pipex->id_child[cmd->nbr_pipe] = fork();
-	if (pipex->id_child[cmd->nbr_pipe] < 0)
-		return ;
-	if (pipex->id_child[cmd->nbr_pipe] == 0)
-		last_child(pipex, cmd);
 	close_parent_fd(pipex, cmd);
 	wait_all(pipex, cmd);
 }
@@ -104,15 +97,12 @@ int	pipex_start(t_cmd *cmd)
 {
 	t_pipex	pipex;
 
-	// pipex.env = env;
-	// pipex.argc = argc;
-	//pipex.cmd = parsing_command(argc, argv);
-	// pipex.argv = argv;
-	//pipex.cmd_path = parsing_command_path(&pipex);
 	pipex.id_child = malloc((cmd->nbr_pipe + 1) * sizeof(*pipex.id_child));
 	if (!pipex.id_child)
 		return (1);
-	pipex.fd_pipe = pipe_allocation(cmd->nbr_pipe);
+	if (cmd->nbr_pipe == 0)
+		one_command_exec(&pipex, cmd);
+	pipex.fd_pipe = pipe_allocation(cmd->nbr_pipe); 
 	ft_pipex(cmd, &pipex);
 	// free_all(&pipex);
 	return (0);

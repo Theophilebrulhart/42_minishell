@@ -6,7 +6,7 @@
 #    By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 16:35:37 by tbrulhar          #+#    #+#              #
-#    Updated: 2022/06/09 17:33:47 by tbrulhar         ###   ########.fr        #
+#    Updated: 2022/06/10 14:06:56 by tbrulhar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ SRCS         =	src/main/main.c\
 				src/pipex/parsing_command.c\
 				src/pipex/pipex_main.c\
 				src/pipex/waitpid.c\
+				src/pipex/one_command_exec.c\
+				src/pipex/files_redirection.c\
 				
 OBJS         = ${SRCS:.c=.o}
 

@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 18:25:00 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/06/10 11:43:22 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/10 15:11:16 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv, char **env)
 	cmd.outfile = argv[4];
 	printf("cmd.outfile : %s\n", cmd.outfile);
 	cmd.env = env;
-	cmd.nbr_pipe = 2;
+	cmd.nbr_pipe = 1;
 	pipex_start(&cmd);
 	(void)argc;
 	(void)argv;

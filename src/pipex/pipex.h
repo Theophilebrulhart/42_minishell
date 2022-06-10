@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 12:15:07 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/06/10 11:25:36 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/10 14:09:50 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,7 @@ char	*path_str(t_pipex *pipex, t_cmd *cmd);
 char	*path_creation(t_pipex *pipex, char **all_path);
 char	*access_test(t_pipex *pipex, t_cmd *cmd, char **all_path);
 char	*ft_strjoin(char const *s1, char const *s2);
+void	one_command_exec(t_pipex *pipex, t_cmd *cmd);
+void	infile_redirection(t_cmd *cmd, t_pipex *pipex, int *infile);
+void	outfile_redirection(t_cmd *cmd, t_pipex *pipex, int *outfile);
 #endif
