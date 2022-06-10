@@ -7,8 +7,10 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
  
+make: *** No rule to make target `src/main/main.o', needed by `minishell'.  Stop.
 
-# Make data base, printed on Thu Jun  9 17:33:56 2022
+
+# Make data base, printed on Fri Jun 10 09:22:35 2022
 
 # Variables
 
@@ -38,6 +40,8 @@ _ = /usr/bin/make
 CFLAGS = -Wall -Wextra -Werror
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
+# makefile (from `Makefile', line 13)
+SRCS = src/main/main.c src/builtin/cd.c src/builtin/is_builtin.c src/pipex/access_path.c src/pipex/child_execution.c src/pipex/error_file.c src/pipex/ft_split.c src/pipex/parsing_command.c src/pipex/pipex_main.c src/pipex/waitpid.c 
 # makefile (from `Makefile', line 30)
 GCC = gcc
 # environment
@@ -45,11 +49,11 @@ VSCODE_VERBOSE_LOGGING = true
 # makefile (from `Makefile', line 24)
 OBJS = ${SRCS:.c=.o}
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cbx00032z8/T/vscode-ipc-ae3dc663-947f-4fff-b1ae-d5d2d05266d6.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cbx00032z8/T/vscode-ipc-ff2eb9c3-7bb1-47dd-8cd6-93aa6900bcc5.sock
 # environment
 VSCODE_CWD = /
 # environment
-PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
+PATH = /Users/tbrulhar/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # makefile (from `Makefile', line 38)
 FRAMLIBS = -L ${LBFT_PATH} -lft
 # makefile (from `Makefile', line 28)
@@ -61,9 +65,11 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.AbLILJcCqU/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.Efe08wZ2Wo/Listeners
 # automatic
 %F = $(notdir $%)
+# environment
+HOMEBREW_TEMP = /tmp/tbrulhar/Homebrew/Temp
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -92,8 +98,8 @@ XPC_FLAGS = 0x0
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
-# makefile (from `Makefile', line 13)
-SRCS = src/main/main.c src/builtin/cd.c src/builtin/is_builtin.c src/pipex/access_path.c src/pipex/child_execution.c src/pipex/error_file.c src/pipex/ft_split.c src/pipex/parsing_command.c src/pipex/pipex_main.c src/pipex/waitpid.c 
+# environment
+HOMEBREW_CACHE = /tmp/tbrulhar/Homebrew/Caches
 # environment
 SHLVL = 1
 # default
@@ -123,7 +129,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.2148
+XPC_SERVICE_NAME = com.microsoft.VSCode.2132
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -149,9 +155,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 20673
+VSCODE_PID = 95245
 # variable set hash-table stats:
-# Load=69/1024=7%, Rehash=0, Collisions=3/97=3%
+# Load=71/1024=7%, Rehash=0, Collisions=5/99=5%
 
 # Pattern-specific Variable Values
 
@@ -159,9 +165,9 @@ VSCODE_PID = 20673
 
 # Directories
 
-# . (device 16777225, inode 947872): 10 files, no impossibilities.
+# . (device 16777225, inode 947872): 11 files, no impossibilities.
 
-# 10 files, no impossibilities in 1 directories.
+# 11 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -175,9 +181,6 @@ all: minishell
 #  File does not exist.
 #  File has not been updated.
 # variable set hash-table stats:
- 
-make: *** No rule to make target `src/builtin/is_builtin.o', needed by `minishell'.  Stop.
-
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
@@ -215,7 +218,7 @@ src/pipex/error_file.o:
 
 minishell: src/main/main.o src/builtin/cd.o src/builtin/is_builtin.o src/pipex/access_path.o src/pipex/child_execution.o src/pipex/error_file.o src/pipex/ft_split.o src/pipex/parsing_command.o src/pipex/pipex_main.o src/pipex/waitpid.o
 #  Implicit rule search has not been done.
-#  File does not exist.
+#  Last modified 2022-06-09 20:08:30
 #  File has not been updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
@@ -269,12 +272,9 @@ clean:
 
 # Not a target:
 src/builtin/cd.o:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-09 17:10:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 src/pipex/parsing_command.o:
@@ -284,11 +284,9 @@ src/pipex/parsing_command.o:
 
 # Not a target:
 src/builtin/is_builtin.o:
-#  Implicit rule search has been done.
-#  File does not exist.
+#  Implicit rule search has not been done.
+#  Modification time never checked.
 #  File has not been updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 src/pipex/child_execution.o:
@@ -299,9 +297,8 @@ src/pipex/child_execution.o:
 # Not a target:
 src/main/main.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-09 17:32:57
-#  File has been updated.
-#  Successfully updated.
+#  File does not exist.
+#  File has not been updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
@@ -322,8 +319,9 @@ src/pipex/pipex_main.o:
 # # of strings in strcache: 1
 # # of strcache buffers: 1
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+ 
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Thu Jun  9 17:33:56 2022
+# Finished Make data base on Fri Jun 10 09:22:35 2022
 
  

@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:12:17 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/06/09 20:13:51 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/10 11:29:57 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*path_str(t_pipex *pipex, t_cmd *cmd)
 	env.path_str = malloc((ft_strlen(cmd->env[env.j]) - 4)
 			* sizeof(*path_str));
 	if (!env.path_str)
-		free_all(pipex);
+		free_all(pipex, cmd);
 	env.i = 0;
 	while (cmd->env[env.j][env.t])
 		env.path_str[env.i++] = cmd->env[env.j][env.t++];
@@ -66,7 +66,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (str);
 }
 
-char	*access_test(t_cmd *cmd, char **all_path)
+char	*access_test(t_pipex *pipex, t_cmd *cmd, char **all_path)
 {
 	char	*str_path;
 	int		i;
@@ -82,7 +82,6 @@ char	*access_test(t_cmd *cmd, char **all_path)
 		free(str_path);
 		i++;
 	}
-	printf("on a pas rouver la commande\n");
-	//error_exit(cmd, "command not found", cmd->cmd_path);
+	error_exit(pipex, cmd, "command not found", *cmd->cmd_path);
 	return (NULL);
 }

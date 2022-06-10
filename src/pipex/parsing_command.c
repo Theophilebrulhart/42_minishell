@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:37:57 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/06/09 19:53:06 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/10 11:34:07 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,9 @@ char	*parsing_command_path(t_pipex *pipex, t_cmd *cmd)
 	char	*final_path = NULL;
 
 	path_s = path_str(pipex, cmd);
-	printf("path_s : %s\n", path_s);
 	all_path = ft_split(path_s, ':');
 	free(path_s);
-	final_path = access_test(cmd, all_path);
+	final_path = access_test(pipex, cmd, all_path);
 	free(all_path);
 	return (final_path);
 }

@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:30:22 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/06/09 20:10:55 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/10 09:44:09 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@
 # include <fcntl.h>
 # include <sys/ioctl.h>
 # include "../libft/libft.h"
-# include "../src/pipex/pipex.h"
 
-typedef struct	s_cmd
-{
+typedef struct s_cmd {
 	char	*infile;
 	char	*outfile;
 	char	**cmd_path;

@@ -6,20 +6,20 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:16:18 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/05/12 15:13:14 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/10 10:32:15 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	wait_all(t_pipex *pipex)
+void	wait_all(t_pipex *pipex, t_cmd *cmd)
 {
 	int	i;
 	int	status;
 	int	status_return;
 
 	i = 0;
-	while (i < pipex->argc - 3)
+	while (i < cmd->nbr_pipe + 1)
 	{
 		waitpid(pipex->id_child[i], &status, 0);
 		if (WIFEXITED(status))

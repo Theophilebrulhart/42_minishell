@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "include.h": "c"
+        "include.h": "c",
+        "ioctl.h": "c"
     }
 }

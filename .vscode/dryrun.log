@@ -1,12 +1,108 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/tbrulhar/Documents/42_tronc_commun/3_circle/42_minishell'
+gcc -Wall -Wextra -Werror -Imlx -c src/main/main.c -o src/main/main.o
+gcc -Wall -Wextra -Werror -Imlx -c src/builtin/cd.c -o src/builtin/cd.o
 gcc -Wall -Wextra -Werror -Imlx -c src/builtin/is_builtin.c -o src/builtin/is_builtin.o
- 
+gcc -Wall -Wextra -Werror -Imlx -c src/pipex/access_path.c -o src/pipex/access_path.o
+gcc -Wall -Wextra -Werror -Imlx -c src/pipex/child_execution.c -o src/pipex/child_execution.o
+gcc -Wall -Wextra -Werror -Imlx -c src/pipex/error_file.c -o src/pipex/error_file.o
+gcc -Wall -Wextra -Werror -Imlx -c src/pipex/ft_split.c -o src/pipex/ft_split.o
+gcc -Wall -Wextra -Werror -Imlx -c src/pipex/parsing_command.c -o src/pipex/parsing_command.o
+gcc -Wall -Wextra -Werror -Imlx -c src/pipex/pipex_main.c -o src/pipex/pipex_main.o
+gcc -Wall -Wextra -Werror -Imlx -c src/pipex/waitpid.c -o src/pipex/waitpid.o
 /Applications/Xcode.app/Contents/Developer/usr/bin/make -C ./libft/
  
 make[1]: Entering directory `/Users/tbrulhar/Documents/42_tronc_commun/3_circle/42_minishell/libft'
-make[1]: Nothing to be done for `all'.
+echo Compiling ft_striteri.c
+gcc -c -Wall -Werror -Wextra -g ft_striteri.c -o ft_striteri.o
  
+echo Compiling ft_strmapi.c
+gcc -c -Wall -Werror -Wextra -g ft_strmapi.c -o ft_strmapi.o
+echo Compiling ft_putnbr_fd.c
+gcc -c -Wall -Werror -Wextra -g ft_putnbr_fd.c -o ft_putnbr_fd.o
+echo Compiling ft_putendl_fd.c
+gcc -c -Wall -Werror -Wextra -g ft_putendl_fd.c -o ft_putendl_fd.o
+ 
+echo Compiling ft_putstr_fd.c
+gcc -c -Wall -Werror -Wextra -g ft_putstr_fd.c -o ft_putstr_fd.o
+echo Compiling ft_putchar_fd.c
+gcc -c -Wall -Werror -Wextra -g ft_putchar_fd.c -o ft_putchar_fd.o
+echo Compiling ft_split.c
+gcc -c -Wall -Werror -Wextra -g ft_split.c -o ft_split.o
+echo Compiling ft_itoa.c
+gcc -c -Wall -Werror -Wextra -g ft_itoa.c -o ft_itoa.o
+echo Compiling ft_strtrim.c
+gcc -c -Wall -Werror -Wextra -g ft_strtrim.c -o ft_strtrim.o
+echo Compiling ft_substr.c
+gcc -c -Wall -Werror -Wextra -g ft_substr.c -o ft_substr.o
+echo Compiling ft_strjoin.c
+gcc -c -Wall -Werror -Wextra -g ft_strjoin.c -o ft_strjoin.o
+echo Compiling ft_memcmp.c
+gcc -c -Wall -Werror -Wextra -g ft_memcmp.c -o ft_memcmp.o
+echo Compiling ft_strchr.c
+gcc -c -Wall -Werror -Wextra -g ft_strchr.c -o ft_strchr.o
+echo Compiling ft_strdup.c
+gcc -c -Wall -Werror -Wextra -g ft_strdup.c -o ft_strdup.o
+echo Compiling ft_strlcat.c
+gcc -c -Wall -Werror -Wextra -g ft_strlcat.c -o ft_strlcat.o
+echo Compiling ft_strrchr.c
+gcc -c -Wall -Werror -Wextra -g ft_strrchr.c -o ft_strrchr.o
+echo Compiling ft_strncmp.c
+gcc -c -Wall -Werror -Wextra -g ft_strncmp.c -o ft_strncmp.o
+echo Compiling ft_strnstr.c
+gcc -c -Wall -Werror -Wextra -g ft_strnstr.c -o ft_strnstr.o
+echo Compiling ft_isalpha.c
+gcc -c -Wall -Werror -Wextra -g ft_isalpha.c -o ft_isalpha.o
+echo Compiling ft_isdigit.c
+gcc -c -Wall -Werror -Wextra -g ft_isdigit.c -o ft_isdigit.o
+echo Compiling ft_isalnum.c
+gcc -c -Wall -Werror -Wextra -g ft_isalnum.c -o ft_isalnum.o
+echo Compiling ft_isascii.c
+gcc -c -Wall -Werror -Wextra -g ft_isascii.c -o ft_isascii.o
+echo Compiling ft_isprint.c
+gcc -c -Wall -Werror -Wextra -g ft_isprint.c -o ft_isprint.o
+echo Compiling ft_strlen.c
+gcc -c -Wall -Werror -Wextra -g ft_strlen.c -o ft_strlen.o
+echo Compiling ft_memset.c
+gcc -c -Wall -Werror -Wextra -g ft_memset.c -o ft_memset.o
+echo Compiling ft_bzero.c
+gcc -c -Wall -Werror -Wextra -g ft_bzero.c -o ft_bzero.o
+echo Compiling ft_memcpy.c
+gcc -c -Wall -Werror -Wextra -g ft_memcpy.c -o ft_memcpy.o
+echo Compiling ft_memmove.c
+gcc -c -Wall -Werror -Wextra -g ft_memmove.c -o ft_memmove.o
+echo Compiling ft_atoi.c
+gcc -c -Wall -Werror -Wextra -g ft_atoi.c -o ft_atoi.o
+echo Compiling ft_toupper.c
+gcc -c -Wall -Werror -Wextra -g ft_toupper.c -o ft_toupper.o
+echo Compiling ft_tolower.c
+gcc -c -Wall -Werror -Wextra -g ft_tolower.c -o ft_tolower.o
+echo Compiling ft_strlcpy.c
+gcc -c -Wall -Werror -Wextra -g ft_strlcpy.c -o ft_strlcpy.o
+echo Compiling ft_memchr.c
+gcc -c -Wall -Werror -Wextra -g ft_memchr.c -o ft_memchr.o
+echo Compiling ft_calloc.c
+gcc -c -Wall -Werror -Wextra -g ft_calloc.c -o ft_calloc.o
+echo Compiling ft_lstnew.c
+gcc -c -Wall -Werror -Wextra -g ft_lstnew.c -o ft_lstnew.o
+echo Compiling ft_lstadd_front.c
+gcc -c -Wall -Werror -Wextra -g ft_lstadd_front.c -o ft_lstadd_front.o
+echo Compiling ft_lstsize.c
+gcc -c -Wall -Werror -Wextra -g ft_lstsize.c -o ft_lstsize.o
+echo Compiling ft_lstlast.c
+gcc -c -Wall -Werror -Wextra -g ft_lstlast.c -o ft_lstlast.o
+echo Compiling ft_lstadd_back.c
+gcc -c -Wall -Werror -Wextra -g ft_lstadd_back.c -o ft_lstadd_back.o
+echo Compiling ft_lstdelone.c
+gcc -c -Wall -Werror -Wextra -g ft_lstdelone.c -o ft_lstdelone.o
+echo Compiling ft_lstclear.c
+gcc -c -Wall -Werror -Wextra -g ft_lstclear.c -o ft_lstclear.o
+echo Compiling ft_lstiter.c
+gcc -c -Wall -Werror -Wextra -g ft_lstiter.c -o ft_lstiter.o
+echo Compiling ft_lstmap.c
+gcc -c -Wall -Werror -Wextra -g ft_lstmap.c -o ft_lstmap.o
+echo make libft.a
+ar -rcs libft.a ft_striteri.o ft_strmapi.o ft_putnbr_fd.o ft_putendl_fd.o ft_putstr_fd.o ft_putchar_fd.o ft_split.o ft_itoa.o ft_strtrim.o ft_substr.o ft_strjoin.o ft_memcmp.o ft_strchr.o ft_strdup.o ft_strlcat.o ft_strrchr.o ft_strncmp.o ft_strnstr.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_strlen.o ft_memset.o ft_bzero.o ft_memcpy.o ft_memmove.o ft_atoi.o ft_toupper.o ft_tolower.o ft_strlcpy.o ft_memchr.o ft_calloc.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o 
 make[1]: Leaving directory `/Users/tbrulhar/Documents/42_tronc_commun/3_circle/42_minishell/libft'
 gcc src/main/main.o src/builtin/cd.o src/builtin/is_builtin.o src/pipex/access_path.o src/pipex/child_execution.o src/pipex/error_file.o src/pipex/ft_split.o src/pipex/parsing_command.o src/pipex/pipex_main.o src/pipex/waitpid.o -Wall -Wextra -Werror -I ./libft/ -o minishell -L ./libft/ -lft
 make: Leaving directory `/Users/tbrulhar/Documents/42_tronc_commun/3_circle/42_minishell'

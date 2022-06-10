@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:18:05 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/06/09 20:10:30 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/10 11:41:38 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ int	**pipe_allocation(int nbr_pipe)
 	return (fd_pipe);
 }
 
-void	close_parent_fd(t_pipex *pipex)
+void	close_parent_fd(t_pipex *pipex, t_cmd *cmd)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < pipex->argc - 4)
+	while (i < cmd->nbr_pipe)
 	{
 		j = 0;
 		while (pipex->fd_pipe[i][j])
@@ -52,19 +52,23 @@ void	close_parent_fd(t_pipex *pipex)
 	}
 }
 
-void	forking_middle_child(t_pipex *pipex)
+void	forking_middle_child(t_pipex *pipex, t_cmd *cmd)
 {
 	int	i;
 
 	i = 1;
-	while (i < pipex->nbr_pipe)
+	while (i < cmd->nbr_pipe)
 	{
+		pipex->cmd_path = parsing_command_path(pipex, cmd);
+		printf("cmd->nbr_pipe : %d\n", cmd->nbr_pipe);
+		is_builtin(cmd);
 		pipex->id_child[i] = fork();
 		if (pipex->id_child[i] < 0)
-			free_all(pipex);
+			free_all(pipex, cmd);
 		if (pipex->id_child[i] == 0)
-			middle_child(pipex, i);
+			middle_child(pipex, cmd, i);
 		i++;
+		// avancer d'un noeud dans la liste
 	}
 }
 
@@ -74,40 +78,40 @@ void	ft_pipex(t_cmd *cmd, t_pipex *pipex)
 	while (pipex->nbr_pipe < cmd->nbr_pipe)
 	{
 		if (pipe(pipex->fd_pipe[pipex->nbr_pipe]) < 0)
-			free_all(pipex);
+			free_all(pipex, cmd);
 		pipex->nbr_pipe++;
 	}
 	is_builtin(cmd);
 	pipex->cmd_path = parsing_command_path(pipex, cmd);
 	pipex->id_child[0] = fork();
 	if (pipex->id_child[0] < 0)
-		free_all(pipex);
+		free_all(pipex, cmd);
 	if (pipex->id_child[0] == 0)
-		first_child(pipex);
-	forking_middle_child(pipex);
-	pipex->id_child[pipex->argc - 4] = fork();
-	if (pipex->id_child[pipex->argc - 4] < 0)
+		first_child(pipex, cmd);
+	//avancer d'un noeuds dans la liste
+	forking_middle_child(pipex, cmd);
+	pipex->cmd_path = parsing_command_path(pipex, cmd);
+	pipex->id_child[cmd->nbr_pipe] = fork();
+	if (pipex->id_child[cmd->nbr_pipe] < 0)
 		return ;
-	if (pipex->id_child[pipex->argc - 4] == 0)
-		last_child(pipex);
-	close_parent_fd(pipex);
-	wait_all(pipex);
+	if (pipex->id_child[cmd->nbr_pipe] == 0)
+		last_child(pipex, cmd);
+	close_parent_fd(pipex, cmd);
+	wait_all(pipex, cmd);
 }
 
 int	pipex_start(t_cmd *cmd)
 {
 	t_pipex	pipex;
 
-	printf("cmd.infile : %s\n", cmd->infile);
-	printf("cmd.path[0] : %s\n", cmd->cmd_path[0]);
 	// pipex.env = env;
 	// pipex.argc = argc;
 	//pipex.cmd = parsing_command(argc, argv);
 	// pipex.argv = argv;
 	//pipex.cmd_path = parsing_command_path(&pipex);
 	pipex.id_child = malloc((cmd->nbr_pipe + 1) * sizeof(*pipex.id_child));
-	// if (!pipex.id_child)
-	// 	return (1);
+	if (!pipex.id_child)
+		return (1);
 	pipex.fd_pipe = pipe_allocation(cmd->nbr_pipe);
 	ft_pipex(cmd, &pipex);
 	// free_all(&pipex);
