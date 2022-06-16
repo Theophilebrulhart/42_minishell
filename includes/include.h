@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   include.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: theophilebrulhart <theophilebrulhart@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:30:22 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/06/10 09:44:09 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/13 15:19:54 by theophilebr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 
 typedef struct s_cmd {
 	char	*infile;
+	int		infile_int;
+	int		outfile_int;
 	char	*outfile;
 	char	**cmd_path;
 	char	*full_cmd;

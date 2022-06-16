@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: theophilebrulhart <theophilebrulhart@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 13:32:41 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/06/10 13:52:44 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:57:43 by theophilebr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

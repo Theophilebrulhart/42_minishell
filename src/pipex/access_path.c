@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   access_path.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: theophilebrulhart <theophilebrulhart@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:12:17 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/06/10 11:29:57 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:58:35 by theophilebr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

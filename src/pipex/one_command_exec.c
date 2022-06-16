@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   one_command_exec.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: theophilebrulhart <theophilebrulhart@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:38:51 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/06/10 14:11:31 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:46:38 by theophilebr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,21 @@
 
 void	command_exec(t_cmd *cmd, t_pipex *pipex)
 {
-	int	fd_infile;
-	int	fd_outfile;
+	//int	fd_infile;
+	//int	fd_outfile;
 
-	if (cmd->infile)
+	if (cmd->infile_int)
 	{
-		infile_redirection(cmd, pipex, &fd_infile);
-		close(fd_infile);
+		printf("la ca marche\n");
+		dup2(cmd->infile_int, STDIN_FILENO);
+		close(cmd->infile_int);
 	}
-	if (cmd->outfile)
+	printf("infile fini\n");
+	if (cmd->outfile_int != 0 && cmd->outfile_int > 0)
 	{
-		outfile_redirection(cmd, pipex, &fd_outfile);
-		close(fd_outfile);
+		printf("on est dans le outfile\n");
+		dup2(cmd->outfile_int, STDOUT_FILENO);
+		close(cmd->outfile_int);
 	}
 	execve(pipex->cmd_path, &cmd->cmd_path[0], cmd->env);
 	exit (127);

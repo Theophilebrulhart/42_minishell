@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: theophilebrulhart <theophilebrulhart@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:37:57 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/06/10 11:34:07 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:14:40 by theophilebr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ char	*parsing_command_path(t_pipex *pipex, t_cmd *cmd)
 	char	*path_s;
 	char	**all_path;
 	char	*final_path = NULL;
-
 	path_s = path_str(pipex, cmd);
 	all_path = ft_split(path_s, ':');
 	free(path_s);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: theophilebrulhart <theophilebrulhart@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:18:05 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/06/10 15:09:48 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:21:27 by theophilebr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,11 @@ void	ft_pipex(t_cmd *cmd, t_pipex *pipex)
 			free_all(pipex, cmd);
 		pipex->nbr_pipe++;
 	}
-	is_builtin(cmd);
 	pipex->cmd_path = parsing_command_path(pipex, cmd);
+	printf("bite\n");
+	is_builtin(cmd);
+	printf("bite\n");
+	
 	pipex->id_child[0] = fork();
 	if (pipex->id_child[0] < 0)
 		free_all(pipex, cmd);

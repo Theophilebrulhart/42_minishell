@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: theophilebrulhart <theophilebrulhart@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:30:46 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/06/10 09:45:32 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/13 15:09:06 by theophilebr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,5 @@ void	is_builtin(t_cmd *cmd)
 		printf("c'est le builtin env\n");
 	if (!ft_strncmp(cmd->cmd_path[0], "exit", ft_strlen(cmd->cmd_path[0])))
 		printf("c'est le builtin exit\n");
+	printf("fin de is builtin \n");
 }

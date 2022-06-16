@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   child_execution.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: theophilebrulhart <theophilebrulhart@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:03:12 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/06/10 15:21:02 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:57:41 by theophilebr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,24 @@ void	closing_first_child_pipe(t_cmd *cmd, t_pipex *pipex)
 
 void	first_child(t_pipex *pipex, t_cmd *cmd)
 {
-	int	infile;
-	int	outfile;
 
 	closing_first_child_pipe(cmd, pipex);
-	if (cmd->infile)
+	if (cmd->infile_int)
 	{
-		infile_redirection(cmd, pipex, &infile);
+		printf("infile dans le first child\n");
+		dup2(cmd->infile_int, STDIN_FILENO);
 		close(pipex->fd_pipe[0][0]);
-		close(infile);
+		close(cmd->infile_int);
 	}
-	if (cmd->outfile)
+	if (cmd->outfile_int != 1 && cmd->outfile_int > 0)
 	{
 		printf("outfile dans le first child\n\n");
-		outfile_redirection(cmd, pipex, &outfile);
+		dup2(cmd->outfile_int, STDOUT_FILENO);
 		close(pipex->fd_pipe[0][1]);
-		close(outfile);
+		close(cmd->outfile_int);
+		printf("\n\nMOI ON ME VOIT PAS \n\n");
 	}
-	if (!cmd->outfile)
+	else
 	{
 		printf("\n\n pas de outfile dans le first child\n\n");
 		dup2(pipex->fd_pipe[0][1], STDOUT_FILENO);
@@ -92,32 +92,30 @@ void	closing_middle_pipe(t_pipex *pipex, t_cmd *cmd, int id)
 
 void	middle_child(t_pipex *pipex, t_cmd *cmd, int id)
 {
-	int	fd_outfile;
-	int	fd_infile;
-
-	fd_outfile = 0;
 	closing_middle_pipe(pipex, cmd, id);
-	if (cmd->infile)
+	if (cmd->infile_int)
 	{
-		infile_redirection(cmd, pipex, &fd_infile);
+		printf("infile dans le middle child\n");
+		dup2(cmd->infile_int, STDIN_FILENO);
 		close(pipex->fd_pipe[id - 1][0]);
+		close(cmd->infile_int);
 	}
-	if (!cmd->infile)
+	if (!cmd->infile_int)
 	{
 		dup2(pipex->fd_pipe[id - 1][0], STDIN_FILENO);
 		close(pipex->fd_pipe[id - 1][0]);
 	}
-	if (cmd->outfile)
+	if (cmd->outfile_int != 1 && cmd->outfile_int > 0)
 	{
 		printf("id = %d\n", id);
 		printf("outfile dans le middle child\n");
-		outfile_redirection(cmd, pipex, &fd_outfile);
-		printf("fd_outfile : %d\n", fd_outfile);
+		dup2(cmd->outfile_int, STDOUT_FILENO);
 		close(pipex->fd_pipe[id][1]);
-		close(fd_outfile);
+		close(cmd->outfile_int);
 	}
-	if (!cmd->outfile && id < cmd->nbr_pipe)
+	else
 	{
+		printf("pas de outfile dans le middle chhild\n");
 		dup2(pipex->fd_pipe[id][1], STDOUT_FILENO);
 		close(pipex->fd_pipe[id][1]);
 	}

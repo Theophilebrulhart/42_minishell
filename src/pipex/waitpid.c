@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   waitpid.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: theophilebrulhart <theophilebrulhart@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:16:18 by tbrulhar          #+#    #+#             */
-/*   Updated: 2022/06/10 13:06:42 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2022/06/13 15:34:37 by theophilebr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	wait_all(t_pipex *pipex, t_cmd *cmd)
 	i = 0;
 	while (i < cmd->nbr_pipe + 1)
 	{
+		printf("on attend\n");
 		waitpid(pipex->id_child[i], &status, 0);
 		if (WIFEXITED(status))
 		{
